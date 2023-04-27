@@ -1,0 +1,5 @@
+label,date,email_address,name,title,event_name,event_month,event_date,event_location,sent_date,replied_date,action
+respond,4/25/2023,mramjee281@gmail.com,Mimi Ramjee,Events Coordinator,2023 Test Event Convention,September,9/13/2023,"Memphis, TN",,4/25/2023,skip
+manual,4/28/2023,mimikramjee@gmail.com,Munira Ramjee,Meeting Planner,2023 Test Event Conference,December,12/15/2023,"Houston, TX",,,
+auto,05/26/2023,muniraramjee@gmail.com,M. Ramjee,Event Planner,2023 Test Test Convention,July,7/18/2023,"Miami, FL",04/26/2023,,sent
+respond,5/2/2023,mkramjee@gmail.com,M. Ramjee,Event Planner,2023 Test Test Convention,July,7/18/2023,"Miami, FL",4/25/2023,4/25/2023,skip
