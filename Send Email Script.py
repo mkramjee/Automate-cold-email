@@ -41,8 +41,7 @@ email_template = """
 
 <p>Thank you for considering NxtGen Events.</p>
 
-<p>Best Regards, <br>
-Matt Wassmer</p>
+<p>Best Regards, </p>
 
 <p>Matt Wassmer <br>
 Vice President/Managing Partner <br>
@@ -64,6 +63,7 @@ def send_email(to, body, subject):
     mail.HTMLBody = body + "<br><br><img src='" + image_path + "'>"
     mail.Send()
 
+# main program
 for index, row in df.iterrows():
     email_address = row['email_address']
     label = row['label']
@@ -78,22 +78,23 @@ for index, row in df.iterrows():
     replied_date = row['replied_date']
     action = row['action']
 
+    # filter out rows where labels don't match auto, today, and send then move to next step
     if date != today and label != 'auto' and action != 'send':
         continue
     
     else:
-        to = '{}'.format(email_address)
-        body = email_template.format(name=name, event_name=event_name)
-        subject = "AV RFP for {} - {}".format(event_name, event_location)
+        to = '{}'.format(email_address) # define to field
+        body = email_template.format(name=name, event_name=event_name) # define message body
+        subject = "AV RFP for {} - {}".format(event_name, event_location) # define subject field
         
-        send_email (to, body, subject)
+        send_email (to, body, subject) # call send email function
         
-        df.at[index, 'sent_date'] = today
-        df.at[index, 'date'] = (datetime.datetime.today() + datetime.timedelta(days=30)).strftime('%m/%d/%Y')
-        df.at[index, 'action'] = 'sent'
+        df.at[index, 'sent_date'] = today # change sent date in csv to today's date
+        df.at[index, 'date'] = (datetime.datetime.today() + datetime.timedelta(days=30)).strftime('%m/%d/%Y') # change the next time this row should be looped through to 30 days from today
+        df.at[index, 'action'] = 'sent' # change action to sent 
 
 
-df.to_csv('test4251.csv', index=False)
+df.to_csv('test4251.csv', index=False) # write changes to csv
 
 print(df)
 
