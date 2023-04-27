@@ -81,7 +81,7 @@ for index, row in df.iterrows():
     if len(list(sent_items)) > 0:
         last_sent_date = max([item.SentOn.date() for item in sent_items])
         if (datetime.date.today() - last_sent_date).days < 30:
-            df.at[index, 'sent_date'] = last_sent_date.strftime('%m/%d/%Y')# add email sent date to csv
+            df.at[index, 'sent_date'] = last_sent_date.strftime('%m/%d/%Y') # add email sent date to csv
             df.at[index, 'date'] = (datetime.datetime.today() + datetime.timedelta(days=7)).strftime('%m/%d/%Y') # change next date these actions should be repeated for this row 
             df.at[index, 'action'] = 'skip' # change action to skip this row for future steps
         else:
